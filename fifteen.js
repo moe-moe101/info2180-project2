@@ -8,6 +8,7 @@ var emptyY=300;
 
 window.onload = function(){
 generatePuzzle();
+$$("shufflebutton").observe("click",shuffleBoard);
 }
 
 //To each div the puzzlearea applies the puzzlepiece class and positions the divs
@@ -75,15 +76,15 @@ function isNbourEmpty(x,y){
 }
 
 //shuffles the puzzles using 100 random moves
-/*function shuffleBoard(){
-	var tmp =[];
-	for(var j =0;j <100; j++){
-		for(var k= 0; k<pieces.length;k++){
-			if (isNbourEmpty(pieces[k].style.left,pieces[k].style.top)){
-				tmp.push(pieces[k]);
-			}
-		}
-		moveHelp(tmp[Math.floor(Math.random()*tmp.length)]);
-		tmp=[];
-	}
-}*/
+function shuffleBoard(){
+	var tmp = [];
+  for (var i = 0; i < 100; i++) {
+    for (var j = 0; j < pieces.length; j++) {
+      if (isNbourEmpty(pieces[j].style.left, pieces[j].style.top)) {
+        tmp.push(pieces[j]);
+      }
+    }
+    moveHelp(tmp[Math.floor(Math.random() * tmp.length)]);
+    tmp = [];
+  }
+}
